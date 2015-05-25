@@ -14,14 +14,11 @@
 
 
 
-DZ_PLUGIN_DEFINITION( "ReadyKit Renderer" );
+DZ_PLUGIN_DEFINITION( "yaluxplug" );
 
-
-DZ_PLUGIN_AUTHOR( "DanielBui" );
-
+DZ_PLUGIN_AUTHOR( "DB" );
 
 DZ_PLUGIN_VERSION( PLUGIN_MAJOR, PLUGIN_MINOR, PLUGIN_REV, PLUGIN_BUILD );
-
 
 DZ_PLUGIN_DESCRIPTION( "ReadyKit Renderer plugin.  You will see it as an additional Renderer option on the Render Pane." );
 

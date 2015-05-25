@@ -19,7 +19,7 @@
 Rk_RendererGraphicsState::Rk_RendererGraphicsState()
 {
     // Initialize the graphics states
-    rendererName = "ReadyKitRenderer";
+    rendererName = "ReadyKit Renderer"; // This is the name which will be displayed by Daz Studio
     renderOptions = new DzRenderOptions;
 //    renderOptionsFrame = new DzOptionsFrame;
 
