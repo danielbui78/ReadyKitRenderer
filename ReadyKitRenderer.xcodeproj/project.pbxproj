@@ -7,16 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B6D72B5E1B13420000DAAB66 /* ReadyKitRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D72B5D1B13420000DAAB66 /* ReadyKitRenderer.h */; };
-		B6D72B601B13420000DAAB66 /* ReadyKitRendererPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D72B5F1B13420000DAAB66 /* ReadyKitRendererPriv.h */; };
-		B6D72B621B13420000DAAB66 /* ReadyKitRenderer.cp in Sources */ = {isa = PBXBuildFile; fileRef = B6D72B611B13420000DAAB66 /* ReadyKitRenderer.cp */; };
+		B6D72B6A1B13426D00DAAB66 /* ReadyKitRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6D72B681B13426D00DAAB66 /* ReadyKitRenderer.cpp */; };
+		B6D72B6F1B13429F00DAAB66 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D72B6D1B13429F00DAAB66 /* version.h */; };
+		B6D72B711B1342B900DAAB66 /* pluginmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6D72B701B1342B900DAAB66 /* pluginmain.cpp */; };
+		B6D72B891B13574500DAAB66 /* QtCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D72B881B13574500DAAB66 /* QtCore.framework */; };
+		B6D72B8C1B13577E00DAAB66 /* libdzcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D72B8B1B13577E00DAAB66 /* libdzcore.dylib */; };
+		B6D72B8E1B13579800DAAB66 /* QtScript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D72B8D1B13579800DAAB66 /* QtScript.framework */; };
+		B6D72B8F1B13582B00DAAB66 /* ReadyKitRenderer.h in Sources */ = {isa = PBXBuildFile; fileRef = B6D72B691B13426D00DAAB66 /* ReadyKitRenderer.h */; };
+		B6D72B981B135F7700DAAB66 /* QtScript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D72B911B13592200DAAB66 /* QtScript.framework */; };
+		B6D72B991B135F7A00DAAB66 /* libdzcore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D72B921B13592200DAAB66 /* libdzcore.dylib */; };
+		B6D72B9A1B135F7E00DAAB66 /* QtCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D72B931B13592200DAAB66 /* QtCore.framework */; };
+		B6D72B9C1B135F9D00DAAB66 /* QtGui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D72B9B1B135F9D00DAAB66 /* QtGui.framework */; };
+		B6D72B9E1B135FAE00DAAB66 /* QtXml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D72B9D1B135FAE00DAAB66 /* QtXml.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		B6D72B721B13444300DAAB66 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.h";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(CURRENT_ARCH)/moc_$(INPUT_FILE_BASE).cpp",
+			);
+			script = "#!/bin/bash\n\"$DAZ_SDK/bin/$DAZ_PLATFORM_NAME/moc\" \"$INPUT_FILE_PATH\" -o \"$DERIVED_FILE_DIR/$CURRENT_ARCH/moc_$INPUT_FILE_BASE.cpp\"\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		B6D72B5A1B13420000DAAB66 /* libReadyKitRenderer.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libReadyKitRenderer.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6D72B5D1B13420000DAAB66 /* ReadyKitRenderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadyKitRenderer.h; sourceTree = "<group>"; };
-		B6D72B5F1B13420000DAAB66 /* ReadyKitRendererPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReadyKitRendererPriv.h; sourceTree = "<group>"; };
-		B6D72B611B13420000DAAB66 /* ReadyKitRenderer.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ReadyKitRenderer.cp; sourceTree = "<group>"; };
+		B6D72B681B13426D00DAAB66 /* ReadyKitRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReadyKitRenderer.cpp; sourceTree = SOURCE_ROOT; };
+		B6D72B691B13426D00DAAB66 /* ReadyKitRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadyKitRenderer.h; sourceTree = SOURCE_ROOT; };
+		B6D72B6D1B13429F00DAAB66 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = SOURCE_ROOT; };
+		B6D72B701B1342B900DAAB66 /* pluginmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pluginmain.cpp; path = ../pluginmain.cpp; sourceTree = "<group>"; };
+		B6D72B881B13574500DAAB66 /* QtCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtCore.framework; path = "../../../../Shared/My DAZ 3D Library/DAZStudio4.5+ SDK/lib/Mac64/QtCore.framework"; sourceTree = "<group>"; };
+		B6D72B8B1B13577E00DAAB66 /* libdzcore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libdzcore.dylib; path = "../../../../Shared/My DAZ 3D Library/DAZStudio4.5+ SDK/lib/Mac64/libdzcore.dylib"; sourceTree = "<group>"; };
+		B6D72B8D1B13579800DAAB66 /* QtScript.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtScript.framework; path = "../../../../Shared/My DAZ 3D Library/DAZStudio4.5+ SDK/lib/Mac64/QtScript.framework"; sourceTree = "<group>"; };
+		B6D72B911B13592200DAAB66 /* QtScript.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtScript.framework; path = "../../../../Shared/My DAZ 3D Library/DAZStudio4.5+ SDK/lib/Mac32/QtScript.framework"; sourceTree = "<group>"; };
+		B6D72B921B13592200DAAB66 /* libdzcore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libdzcore.dylib; path = "../../../../Shared/My DAZ 3D Library/DAZStudio4.5+ SDK/lib/Mac32/libdzcore.dylib"; sourceTree = "<group>"; };
+		B6D72B931B13592200DAAB66 /* QtCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtCore.framework; path = "../../../../Shared/My DAZ 3D Library/DAZStudio4.5+ SDK/lib/Mac32/QtCore.framework"; sourceTree = "<group>"; };
+		B6D72B9B1B135F9D00DAAB66 /* QtGui.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtGui.framework; path = "../../../../Shared/My DAZ 3D Library/DAZStudio4.5+ SDK/lib/Mac64/QtGui.framework"; sourceTree = "<group>"; };
+		B6D72B9D1B135FAE00DAAB66 /* QtXml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtXml.framework; path = "../../../../Shared/My DAZ 3D Library/DAZStudio4.5+ SDK/lib/Mac64/QtXml.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +56,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D72B9A1B135F7E00DAAB66 /* QtCore.framework in Frameworks */,
+				B6D72B9E1B135FAE00DAAB66 /* QtXml.framework in Frameworks */,
+				B6D72B9C1B135F9D00DAAB66 /* QtGui.framework in Frameworks */,
+				B6D72B981B135F7700DAAB66 /* QtScript.framework in Frameworks */,
+				B6D72B891B13574500DAAB66 /* QtCore.framework in Frameworks */,
+				B6D72B991B135F7A00DAAB66 /* libdzcore.dylib in Frameworks */,
+				B6D72B8C1B13577E00DAAB66 /* libdzcore.dylib in Frameworks */,
+				B6D72B8E1B13579800DAAB66 /* QtScript.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -35,6 +75,8 @@
 			children = (
 				B6D72B5C1B13420000DAAB66 /* ReadyKitRenderer */,
 				B6D72B5B1B13420000DAAB66 /* Products */,
+				B6D72B8A1B13574E00DAAB66 /* Lib64 */,
+				B6D72B941B13592200DAAB66 /* Lib32 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,11 +91,35 @@
 		B6D72B5C1B13420000DAAB66 /* ReadyKitRenderer */ = {
 			isa = PBXGroup;
 			children = (
-				B6D72B5D1B13420000DAAB66 /* ReadyKitRenderer.h */,
-				B6D72B5F1B13420000DAAB66 /* ReadyKitRendererPriv.h */,
-				B6D72B611B13420000DAAB66 /* ReadyKitRenderer.cp */,
+				B6D72B701B1342B900DAAB66 /* pluginmain.cpp */,
+				B6D72B6D1B13429F00DAAB66 /* version.h */,
+				B6D72B681B13426D00DAAB66 /* ReadyKitRenderer.cpp */,
+				B6D72B691B13426D00DAAB66 /* ReadyKitRenderer.h */,
 			);
 			path = ReadyKitRenderer;
+			sourceTree = "<group>";
+		};
+		B6D72B8A1B13574E00DAAB66 /* Lib64 */ = {
+			isa = PBXGroup;
+			children = (
+				B6D72B9D1B135FAE00DAAB66 /* QtXml.framework */,
+				B6D72B9B1B135F9D00DAAB66 /* QtGui.framework */,
+				B6D72B8D1B13579800DAAB66 /* QtScript.framework */,
+				B6D72B8B1B13577E00DAAB66 /* libdzcore.dylib */,
+				B6D72B881B13574500DAAB66 /* QtCore.framework */,
+			);
+			name = Lib64;
+			sourceTree = "<group>";
+		};
+		B6D72B941B13592200DAAB66 /* Lib32 */ = {
+			isa = PBXGroup;
+			children = (
+				B6D72B911B13592200DAAB66 /* QtScript.framework */,
+				B6D72B921B13592200DAAB66 /* libdzcore.dylib */,
+				B6D72B931B13592200DAAB66 /* QtCore.framework */,
+			);
+			name = Lib32;
+			path = ReadyKitRenderer.xcodeproj/..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -63,8 +129,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6D72B5E1B13420000DAAB66 /* ReadyKitRenderer.h in Headers */,
-				B6D72B601B13420000DAAB66 /* ReadyKitRendererPriv.h in Headers */,
+				B6D72B6F1B13429F00DAAB66 /* version.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +145,7 @@
 				B6D72B581B13420000DAAB66 /* Headers */,
 			);
 			buildRules = (
+				B6D72B721B13444300DAAB66 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -124,7 +190,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6D72B621B13420000DAAB66 /* ReadyKitRenderer.cp in Sources */,
+				B6D72B8F1B13582B00DAAB66 /* ReadyKitRenderer.h in Sources */,
+				B6D72B6A1B13426D00DAAB66 /* ReadyKitRenderer.cpp in Sources */,
+				B6D72B711B1342B900DAAB66 /* pluginmain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +203,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -149,8 +218,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DAZ_PLATFORM_NAME = Mac64;
+				DAZ_SDK = "/Users/Shared/My DAZ 3D Library/DAZStudio4.5+ SDK";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXPORTED_SYMBOLS_FILE = "$(DAZ_SDK)/include/exportedPluginSymbols.txt";
+				FRAMEWORK_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -166,6 +239,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(DAZ_SDK)/include\"",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				LIBRARY_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -177,8 +256,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -191,9 +271,13 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DAZ_PLATFORM_NAME = Mac64;
+				DAZ_SDK = "/Users/Shared/My DAZ 3D Library/DAZStudio4.5+ SDK";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXPORTED_SYMBOLS_FILE = "$(DAZ_SDK)/include/exportedPluginSymbols.txt";
+				FRAMEWORK_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -202,6 +286,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(DAZ_SDK)/include\"",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				LIBRARY_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -211,12 +301,26 @@
 		B6D72B661B13420000DAAB66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ADDITIONAL_SDKS = "\"$(DAZ_SDK)\"";
+				ARCHS = "$(ARCHS_STANDARD)";
+				BUNDLE_LOADER = "";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				DAZ_PLATFORM_NAME = Mac64;
+				DAZ_SDK = "/Users/Shared/My DAZ 3D Library/DAZStudio4.5+ SDK";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				LIBRARY_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -224,12 +328,26 @@
 		B6D72B671B13420000DAAB66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ADDITIONAL_SDKS = "\"$(DAZ_SDK)\"";
+				ARCHS = "$(ARCHS_STANDARD)";
+				BUNDLE_LOADER = "";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				DAZ_PLATFORM_NAME = Mac64;
+				DAZ_SDK = "/Users/Shared/My DAZ 3D Library/DAZStudio4.5+ SDK";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				LIBRARY_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
