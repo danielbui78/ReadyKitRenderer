@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B642497B1B1371D800A5560C /* pluginmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B642497A1B1371D800A5560C /* pluginmain.cpp */; };
+		B642497E1B1374A400A5560C /* Rk_OptionsFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B642497C1B1374A400A5560C /* Rk_OptionsFrame.cpp */; };
+		B642497F1B1374A400A5560C /* Rk_OptionsFrame.h in Sources */ = {isa = PBXBuildFile; fileRef = B642497D1B1374A400A5560C /* Rk_OptionsFrame.h */; };
+		B64249861B138DEC00A5560C /* Rk_GraphicsState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B64249841B138DEC00A5560C /* Rk_GraphicsState.cpp */; };
+		B64249871B138DEC00A5560C /* Rk_GraphicsState.h in Sources */ = {isa = PBXBuildFile; fileRef = B64249851B138DEC00A5560C /* Rk_GraphicsState.h */; };
 		B6D72B6A1B13426D00DAAB66 /* ReadyKitRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6D72B681B13426D00DAAB66 /* ReadyKitRenderer.cpp */; };
 		B6D72B6F1B13429F00DAAB66 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = B6D72B6D1B13429F00DAAB66 /* version.h */; };
 		B6D72B891B13574500DAAB66 /* QtCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D72B881B13574500DAAB66 /* QtCore.framework */; };
@@ -34,6 +38,10 @@
 
 /* Begin PBXFileReference section */
 		B642497A1B1371D800A5560C /* pluginmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pluginmain.cpp; sourceTree = SOURCE_ROOT; };
+		B642497C1B1374A400A5560C /* Rk_OptionsFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rk_OptionsFrame.cpp; sourceTree = SOURCE_ROOT; };
+		B642497D1B1374A400A5560C /* Rk_OptionsFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rk_OptionsFrame.h; sourceTree = SOURCE_ROOT; };
+		B64249841B138DEC00A5560C /* Rk_GraphicsState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rk_GraphicsState.cpp; sourceTree = SOURCE_ROOT; };
+		B64249851B138DEC00A5560C /* Rk_GraphicsState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rk_GraphicsState.h; sourceTree = SOURCE_ROOT; };
 		B6D72B5A1B13420000DAAB66 /* libReadyKitRenderer.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libReadyKitRenderer.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D72B681B13426D00DAAB66 /* ReadyKitRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReadyKitRenderer.cpp; sourceTree = SOURCE_ROOT; };
 		B6D72B691B13426D00DAAB66 /* ReadyKitRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadyKitRenderer.h; sourceTree = SOURCE_ROOT; };
@@ -81,7 +89,11 @@
 		B6D72B5C1B13420000DAAB66 /* ReadyKitRenderer */ = {
 			isa = PBXGroup;
 			children = (
+				B64249841B138DEC00A5560C /* Rk_GraphicsState.cpp */,
+				B64249851B138DEC00A5560C /* Rk_GraphicsState.h */,
 				B642497A1B1371D800A5560C /* pluginmain.cpp */,
+				B642497C1B1374A400A5560C /* Rk_OptionsFrame.cpp */,
+				B642497D1B1374A400A5560C /* Rk_OptionsFrame.h */,
 				B6D72B6D1B13429F00DAAB66 /* version.h */,
 				B6D72B681B13426D00DAAB66 /* ReadyKitRenderer.cpp */,
 				B6D72B691B13426D00DAAB66 /* ReadyKitRenderer.h */,
@@ -169,9 +181,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B64249871B138DEC00A5560C /* Rk_GraphicsState.h in Sources */,
+				B642497F1B1374A400A5560C /* Rk_OptionsFrame.h in Sources */,
+				B64249861B138DEC00A5560C /* Rk_GraphicsState.cpp in Sources */,
 				B6D72B8F1B13582B00DAAB66 /* ReadyKitRenderer.h in Sources */,
 				B6D72B6A1B13426D00DAAB66 /* ReadyKitRenderer.cpp in Sources */,
 				B642497B1B1371D800A5560C /* pluginmain.cpp in Sources */,
+				B642497E1B1374A400A5560C /* Rk_OptionsFrame.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

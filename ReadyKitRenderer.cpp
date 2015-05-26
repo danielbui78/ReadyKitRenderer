@@ -10,36 +10,6 @@
 
 
 ////////////////////
-// RendererGraphicsState Class
-//      Method definitions for the GrapicsState Class.  Subclass this class to store all of your
-//      relevant state-related information.
-////////////////////
-
-// Constructor for the GraphicsState object, which will manage all of our graphics contexts
-Rk_RendererGraphicsState::Rk_RendererGraphicsState()
-{
-    // Initialize the graphics states
-    rendererName = "ReadyKit Renderer"; // This is the name which will be displayed by Daz Studio
-    renderOptions = new DzRenderOptions;
-//    renderOptionsFrame = new DzOptionsFrame;
-
-    // Initialize Default Object Attributes
-    Rk_ObjectAttributes *oa = new Rk_ObjectAttributes;
-    attributeStack.append(*oa);
-
-}
-
-// Returns the currently active attribute from the graphics stack
-QString Rk_RendererGraphicsState::getObjectAttribute()
-{
-    Rk_ObjectAttributes *activeAttributes = &attributeStack.last();
-    return activeAttributes->objectAttribute;
-}
-
-
-
-
-////////////////////
 // ReadyKitRenderer Class
 //      This is the main renderer plugin class.  Subclass this class and override whatever DzRenderer API calls
 //      you will need to make your renderer work.  Ex, you will need to override at least some of the renderman API calls

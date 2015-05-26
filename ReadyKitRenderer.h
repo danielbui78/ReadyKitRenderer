@@ -14,72 +14,8 @@
 //#include "plugin.h"
 #include "dzrenderer.h"
 #include "dzapp.h"
-#include <QtCore/QStringList>
-#include <QtCore/QRect>
 
-class DzRenderData;
-class QStringList;
-class QFrame;
-class QTextEdit;
-class DzProgress;
-class DzObject;
-
-////////////////////////
-// RendererGraphicsState
-//      This class will encapsulate all the data and stack functionallity for the graphics state / context.
-//      This class can be subclassed and used to store all the renderer-specific state information.
-//      Terminology:
-//          Options == scene-wide parameters which should not change within a scene
-//          Attributes == parameters which can vary from object to object
-///////////////////////
-class Rk_RendererGraphicsState
-{
-public: // methods
-    Rk_RendererGraphicsState();
-
-    // placeholder member
-    QString getObjectAttribute();
-
-public: // members
-    QString rendererName;
-    DzRenderOptions *renderOptions;
-    DzOptionsFrame *renderOptionsFrame;
-    DzRenderHandler *activeRenderHandler;
-
-    QFrame *logWindow;
-    QTextEdit *logBuffer;
-    DzProgress *renderProgress;
-    DzProgress *frameProgress;
-
-    // scene-wide render options
-    bool bIsRendering;
-    int totalFrames;
-    int frame_counter;
-    int activeFrame;
-    int endFrame;
-    bool bIsSpotRender;
-    QRect cropWindow;
-
-    // filenames, temporary files
-    QString tempPath; // directory to store all temporary generated files
-    QString imageCachePath; // path to cache the image files that have already been converted to a render engine-specific/compliant format
-    QString sceneFilename;
-    QString temporaryRenderFilename;
-
-    struct Rk_ObjectAttributes
-    {
-        DzNode *currentNode;
-        DzShape *currentShape;
-        DzObject *currentObject;
-        DzMaterial *currentMaterial;
-
-        // place holder member
-        QString objectAttribute;
-    };
-    QList<Rk_ObjectAttributes> attributeStack;
-
-};
-
+#include "Rk_GraphicsState.h"
 
 class ReadyKitRenderer : public DzRenderer {
     Q_OBJECT
