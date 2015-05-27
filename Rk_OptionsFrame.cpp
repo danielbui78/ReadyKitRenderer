@@ -29,7 +29,6 @@
 ///////////////////////
 Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame("ReadyKit Options Frame", 0, "ReadyKit Options Frame")
 {
-    // connect the graphicsState render options to the UI
     graphicsState = gs;
     
     QVBoxLayout *layout1 = new QVBoxLayout(this);
@@ -48,6 +47,7 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
     layout1->addWidget(filterBar);
     layout1->addWidget(listView);
     
+    // connect the graphicsState render options to the UI
     listView->addProperty(gs->execPath);
     listView->addProperty(gs->argumentList);
     listView->addProperty(gs->renderMode);
@@ -60,8 +60,6 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
     this->setLayout(layout1);
     
 }
-
-
 
 
 
@@ -86,5 +84,5 @@ bool    Rk_OptionsFrame::applyValid() const
 
 void	Rk_OptionsFrame::restoreOptions( DzRenderOptions *options )
 {
-    
-};
+    graphicsState->loadSettings();
+}

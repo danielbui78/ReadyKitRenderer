@@ -1,6 +1,6 @@
 //
 //  ReadyKitRenderer.h
-//  yaluxplug
+//  ReadyKit Renderer
 //
 //  Created by Daniel Bui on 5/17/15.
 //  Copyright (c) 2015 Daniel Bui. All rights reserved.
@@ -34,7 +34,7 @@ public:
 
 
     ///////////////////////////
-    // Mode-Changing routines
+    // State-Changing routines
     //      Scene is begun with DiWorldBegin().  Once called, option values are frozen and forbidden to call option-changing procedures
     //      until scene description is finished.  Attributes can be changed within the scene.  Geometry is described by using primitive
     //      geometry calls.  The attributes in the current graphics state applies to the geometry at the time they are described using
@@ -217,7 +217,7 @@ public:
 
 
     // ------------------ Rendering
-    virtual bool    render( DzRenderHandler *handler, DzCamera *camera, const DzRenderOptions &opt )    { dzApp->log("ReadyKitRenderer: unimplemented method: render( DzRenderHandler *handler, DzCamera *camera, const DzRenderOptions &opt )"); return false;}
+    virtual bool    render( DzRenderHandler *handler, DzCamera *camera, const DzRenderOptions &opt );
     virtual bool    customRender( DzRenderHandler *handler, DzCamera *camera, DzLightList &lights, DzNodeList &nodes, const DzRenderOptions &opt )  { dzApp->log("ReadyKitRenderer: unimplemented method: customRender( DzRenderHandler *handler, DzCamera *camera, DzLightList &lights, DzNodeList &nodes, const DzRenderOptions &opt )"); return false;}
 
     //////////////////////////////////////////////////////////
@@ -229,7 +229,7 @@ public:
     // MANIPULATORS
     //
 
-    virtual void    prepareImage( const DzTexture *img, const QString &filename )   { dzApp->log("ReadyKitRenderer: unimplemented method: prepareImage( const DzTexture *img, const QString &filename )"); }
+    virtual void    prepareImage( const DzTexture *img, const QString &filename );
     virtual QString compileShader( const QString &shaderPath, QString &output ) { dzApp->log("ReadyKitRenderer: unimplemented method: compileShader( const QString &shaderPath, QString &output )"); return NULL;}
     virtual DzShaderDescription*    getShaderInfo( const QString &shaderPath )  { dzApp->log("ReadyKitRenderer: unimplemented method: getShaderInfo( const QString &shaderPath )"); return NULL;}
     virtual void    killRender()    { dzApp->log("ReadyKitRenderer: unimplemented method: killRender()"); }

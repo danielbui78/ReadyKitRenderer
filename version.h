@@ -1,6 +1,6 @@
 //
 //  version.h
-//  yaluxplug
+//  ReadyKit Renderer
 //
 //  Created by Daniel Bui on 5/22/15.
 //  Copyright (c) 2015 Daniel Bui. All rights reserved.

@@ -14,7 +14,7 @@
 
 
 
-DZ_PLUGIN_DEFINITION( "yaluxplug" );
+DZ_PLUGIN_DEFINITION( "ReadyKitRenderer" );
 
 DZ_PLUGIN_AUTHOR( "DB" );
 
