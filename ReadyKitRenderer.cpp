@@ -29,6 +29,16 @@ ReadyKitRenderer::ReadyKitRenderer()
 
 }
 
+void ReadyKitRenderer::log( QString string, int debugLevel )
+{
+    // check debugLevel against current renderer settings
+    if (debugLevel >= graphicsState->getDebugLevel())
+    {
+        dzApp->log(string);
+    }
+    
+}
+
 ////////////////////
 // DzOptionsFrame* getOptionsFrame
 //      Returns a pointer to an OptionsFrame object.  This will be used by DazGUI to draw the Renderer Advanced Settings tab.
@@ -37,7 +47,7 @@ ReadyKitRenderer::ReadyKitRenderer()
 ////////////////////
 DzOptionsFrame* ReadyKitRenderer::getOptionsFrame() const
 {
-    dzApp->log("ReadyKitRenderer: getOptionsFrame()");
+    logConst("ReadyKitRenderer: getOptionsFrame()");
     return graphicsState->renderOptionsFrame;
 }
 
@@ -57,7 +67,7 @@ DzOptionsFrame* ReadyKitRenderer::getOptionsFrame() const
 //////////////////
 bool ReadyKitRenderer::render( DzRenderHandler *handler, DzCamera *camera, const DzRenderOptions &opt )
 {
-    dzApp->log("ReadyKitRenderer: render( DzRenderHandler *handler, DzCamera *camera, const DzRenderOptions &opt )");
+    logDebugVerbose("ReadyKitRenderer: render( DzRenderHandler *handler, DzCamera *camera, const DzRenderOptions &opt )");
     return false;
 
 }
@@ -69,7 +79,8 @@ bool ReadyKitRenderer::render( DzRenderHandler *handler, DzCamera *camera, const
 //      Called by the Daz Studio framework, usually when scene is first loaded.  After the image is prepared, Daz Studio framework
 //      expects the Renderer to emit the imagePrepared() signal with a filename to a temporary image containing a format/size
 //      that is compatible with this Renderer.  The theoretical benefit of implementing this method is that you should only need to
-//      convert images once when scene is loaded and then all subsequent renders can skip this step.
+//      convert images once when scene is loaded and then all subsequent renders can skip this step.  For example, 3Delight will
+//      generate *.tdl files in the Daz Studio temporary folder when a scene is loaded.
 //      NOTES:  This method is called from the event loop thread, so not returning from this method will block the application
 //              UI from updating or being interactive.  The recommendation from Daz Studio SDK is to spawn a thread when
 //              prepareImage is called and return from this method as quickly as possible so you do not block the UI event loop.
@@ -84,7 +95,7 @@ bool ReadyKitRenderer::render( DzRenderHandler *handler, DzCamera *camera, const
 ////////////////////
 void ReadyKitRenderer::prepareImage( const DzTexture *img, const QString &filename )
 {
-    dzApp->log("ReadyKitRenderer: prepareImage( const DzTexture *img, const QString &filename )");
+    logDebugVerbose("ReadyKitRenderer: prepareImage( const DzTexture *img, const QString &filename )");
     
 }
 

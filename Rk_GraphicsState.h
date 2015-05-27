@@ -50,7 +50,7 @@ Q_OBJECT
 public: // methods
     Rk_RendererGraphicsState();
 
-    
+
 public slots:
     void execPathChanged();
     void loadSettings();
@@ -58,6 +58,8 @@ public slots:
     
     // placeholder member
     QString getObjectAttribute();
+    int getDebugLevel();
+    void setDebugLevel(int level);
     
 public: // members
     QString rendererName;

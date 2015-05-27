@@ -211,3 +211,14 @@ QString Rk_RendererGraphicsState::getObjectAttribute()
     return activeAttributes->objectAttribute;
 }
 
+
+int Rk_RendererGraphicsState::getDebugLevel()
+{
+    return debugLevel->getValue();
+}
+
+void Rk_RendererGraphicsState::setDebugLevel(int level)
+{
+    debugLevel->setValue(level);
+}
+
