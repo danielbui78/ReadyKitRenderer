@@ -22,7 +22,6 @@ class DzIntProperty;
 class DzFloatProperty;
 class DzEnumProperty;
 class QVBoxLayout;
-class QTreeView;
 
 class Rk_OptionsFrame : public DzOptionsFrame {
     Q_OBJECT
@@ -46,7 +45,6 @@ private:
     DzFilterNavigationBar *filterBar;
     DzSideNavPropertyListView *listView;
     QVBoxLayout *layout1;
-    QTreeView *tree;
 
 };
 

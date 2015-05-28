@@ -40,8 +40,6 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
     filterBar->setPageViewVisible(false);
     filterBar->setPageNavigationVisible(false);
     filterBar->setPageLabelVisible(false);
-
-//    tree = new QTreeView(this);
     
     listView = new DzSideNavPropertyListView(this);
     connect(filterBar, SIGNAL(filterChanged(const QString &)),
@@ -58,11 +56,10 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
     listView->addProperty(gs->renderServerList);
     listView->addProperty(gs->saveAlphaChannel);
 */
-//    tree->setModel(gs->propertyListModel);
+
     listView->setModel(gs->propertyListModel);
     
     layout1->addWidget(filterBar);
-//    layout1->addWidget(tree);
     layout1->addWidget(listView);
     
     this->setLayout(layout1);
