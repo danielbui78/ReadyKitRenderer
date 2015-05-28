@@ -9,6 +9,7 @@
 #include "Rk_OptionsFrame.h"
 
 #include <QtGUI/QLayout>
+#include <QtGUI/QTreeWidget>
 
 #include "dzappsettings.h"
 #include "dzfileio.h"
@@ -31,7 +32,7 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
 {
     graphicsState = gs;
     
-    QVBoxLayout *layout1 = new QVBoxLayout(this);
+    layout1 = new QVBoxLayout(this);
     
     filterBar = new DzFilterNavigationBar(this);
     filterBar->setAutoHidePageNavigation(true);
@@ -39,15 +40,15 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
     filterBar->setPageViewVisible(false);
     filterBar->setPageNavigationVisible(false);
     filterBar->setPageLabelVisible(false);
+
+//    tree = new QTreeView(this);
     
     listView = new DzSideNavPropertyListView(this);
     connect(filterBar, SIGNAL(filterChanged(const QString &)),
             listView, SLOT(setFilterString(const QString &)) );
     
-    layout1->addWidget(filterBar);
-    layout1->addWidget(listView);
-    
     // connect the graphicsState render options to the UI
+/*
     listView->addProperty(gs->execPath);
     listView->addProperty(gs->argumentList);
     listView->addProperty(gs->renderMode);
@@ -56,12 +57,33 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
     listView->addProperty(gs->debugLevel);
     listView->addProperty(gs->renderServerList);
     listView->addProperty(gs->saveAlphaChannel);
+*/
+//    tree->setModel(gs->propertyListModel);
+    listView->setModel(gs->propertyListModel);
+    
+    layout1->addWidget(filterBar);
+//    layout1->addWidget(tree);
+    layout1->addWidget(listView);
     
     this->setLayout(layout1);
+
     
 }
 
-
+/////////////////////
+// Rk_OptionsFrame() Destructor
+//      This class is deleted whenever the renderer changes.  Thus, we need
+//      to do object cleanup and then reset the the graphicsState pointer since
+//      this object is about to be deleted.
+/////////////////////
+Rk_OptionsFrame::~Rk_OptionsFrame()
+{
+    delete listView;
+    delete layout1;
+    delete filterBar;
+    
+    graphicsState->renderOptionsFrame = NULL;
+}
 
 void	Rk_OptionsFrame::applyChanges()
 {

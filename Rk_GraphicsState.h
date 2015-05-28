@@ -36,6 +36,7 @@ class DzEnumProperty;
 class DzFileProperty;
 class DzStringProperty;
 class DzAppSettings;
+class DzPropertyListItemModel;
 
 ////////////////////////
 // RendererGraphicsState
@@ -55,11 +56,14 @@ public slots:
     void execPathChanged();
     void loadSettings();
     void saveSettings();
+    DzOptionsFrame* getOptionsFrame();
     
-    // placeholder member
-    QString getObjectAttribute();
+    // property get/set methods
     int getDebugLevel();
     void setDebugLevel(int level);
+
+    // placeholder member
+    QString getObjectAttribute();
     
 public: // members
     QString rendererName;
@@ -87,6 +91,7 @@ public: // members
     QStringList renderModeList = QStringList() << "Software" << "Hardware" << "Custom Render String...";
 
     // Render Options
+    DzPropertyListItemModel *propertyListModel;
     DzFileProperty      *execPath;
     DzStringProperty    *argumentList;
     DzEnumProperty      *renderMode;

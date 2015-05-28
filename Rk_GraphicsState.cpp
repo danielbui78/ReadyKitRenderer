@@ -18,6 +18,7 @@
 #include "dzfileproperty.h"
 #include "dzenumproperty.h"
 #include "dzboolproperty.h"
+#include "dzpropertylistitemmodel.h"
 
 
 // This sets the executable extension to be used for the executable selection dialogs and path checking code.
@@ -52,6 +53,7 @@ Rk_RendererGraphicsState::Rk_RendererGraphicsState()
     // render executable path
     execPath = new DzFileProperty("rk_renderer_executable_path", false);
     execPath->setLabel("Folder to Luxrender Application");
+    execPath->setPath("Executable");
     execPath->setType(DzFileProperty::FileType::FileOpen);
     execPath->setFilter( QString("FilterName (*.%1)").arg(Rk_ExecutableExt));
     connect(execPath, SIGNAL(currentValueChanged()),
@@ -60,10 +62,12 @@ Rk_RendererGraphicsState::Rk_RendererGraphicsState()
     // Luxrender executable arguments
     argumentList = new DzStringProperty("rk_renderer_executable_arguments", false);
     argumentList->setLabel("Luxrender Commandline Arguments");
+    argumentList->setPath("Executable");
     
     // Render Mode
     renderMode = new DzEnumProperty("rk_renderer_render_mode", false, false);
     renderMode->setLabel("Render Engine");
+    renderMode->setPath("Render Mode");
     for (i=0; i<renderModeList.count(); i++) {
         renderMode->addItem(renderModeList[i]);
     }
@@ -71,17 +75,20 @@ Rk_RendererGraphicsState::Rk_RendererGraphicsState()
     // Custom Render String
     customRenderString = new DzStringProperty("rk_renderer_render_custom", false);
     customRenderString->setLabel("Custom Render String (use Custom Render Engine)");
+    customRenderString->setPath("Render Mode");
     
     // Max Texture Size
     maxTextureSize = new DzEnumProperty("rk_renderer_max_texturesize", false, false);
     maxTextureSize->setLabel("Maximum Texture Size");
+    maxTextureSize->setPath("Hardware");
     for (i=0; i<maxTextureSizeList.count(); i++) {
         maxTextureSize->addItem(maxTextureSizeList[i]);
     }
     
     // Debug output level
     debugLevel = new DzEnumProperty("rk_renderer_debug_level", true, false);
-    debugLevel->setLabel("Debug Output");
+    debugLevel->setLabel("Debug Log Level");
+    debugLevel->setPath("Log");
     for (i=0; i<debugLevelList.count(); i++) {
         debugLevel->addItem(debugLevelList[i]);
     }
@@ -89,21 +96,40 @@ Rk_RendererGraphicsState::Rk_RendererGraphicsState()
     // network render on/off
     networkRenderOn = new DzBoolProperty("rk_renderer_network_render", false, false, false);
     networkRenderOn->setLabel("Enable Network Rendering");
+    networkRenderOn->setPath("Network Rendering");
     
     // render server list
     renderServerList = new DzStringProperty("rk_renderer_network_serverlist", false);
     renderServerList->setLabel("Network Render Servers (IP/hostnames)");
+    renderServerList->setPath("Network Rendering");
     
     // Save Alpha Channel
     saveAlphaChannel = new DzBoolProperty("rk_renderer_save_alpha", true, false, true);
     saveAlphaChannel->setLabel("Save alpha channel in final rendered image");
-
-    // create the render options frame
-    renderOptionsFrame = new Rk_OptionsFrame(this);
+    saveAlphaChannel->setPath("Save Options");
+    
+    propertyListModel = new DzPropertyListItemModel();
+    propertyListModel->addProperty(execPath);
+    propertyListModel->addProperty(argumentList);
+    propertyListModel->addProperty(renderMode);
+    propertyListModel->addProperty(customRenderString);
+    propertyListModel->addProperty(debugLevel);
+    propertyListModel->addProperty(networkRenderOn);
+    propertyListModel->addProperty(renderServerList);
+    propertyListModel->addProperty(maxTextureSize);
+    propertyListModel->addProperty(saveAlphaChannel);
     
     setDefaultSettings();
     loadSettings();
 
+}
+
+DzOptionsFrame* Rk_RendererGraphicsState::getOptionsFrame()
+{
+    if (renderOptionsFrame == NULL)
+        renderOptionsFrame = new Rk_OptionsFrame(this);
+
+    return renderOptionsFrame;
 }
 
 void Rk_RendererGraphicsState::setDefaultSettings()

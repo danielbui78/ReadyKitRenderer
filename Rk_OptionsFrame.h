@@ -21,11 +21,14 @@ class DzBoolProperty;
 class DzIntProperty;
 class DzFloatProperty;
 class DzEnumProperty;
+class QVBoxLayout;
+class QTreeView;
 
 class Rk_OptionsFrame : public DzOptionsFrame {
     Q_OBJECT
 public:
     Rk_OptionsFrame( Rk_RendererGraphicsState *gs);
+    ~Rk_OptionsFrame();
     
     public slots:
     virtual void	applyChanges();
@@ -37,13 +40,13 @@ signals:
     //    void	optionsChanged();
     
 public:
-    DzAppSettings *settings;
     Rk_RendererGraphicsState *graphicsState;
     
 private:
     DzFilterNavigationBar *filterBar;
     DzSideNavPropertyListView *listView;
-    
+    QVBoxLayout *layout1;
+    QTreeView *tree;
 
 };
 

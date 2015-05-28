@@ -48,7 +48,8 @@ void ReadyKitRenderer::log( QString string, int debugLevel )
 DzOptionsFrame* ReadyKitRenderer::getOptionsFrame() const
 {
     logConst("ReadyKitRenderer: getOptionsFrame()");
-    return graphicsState->renderOptionsFrame;
+//    return graphicsState->renderOptionsFrame;
+    return graphicsState->getOptionsFrame();
 }
 
 //////////////////
