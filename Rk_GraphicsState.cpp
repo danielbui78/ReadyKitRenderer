@@ -124,6 +124,12 @@ Rk_RendererGraphicsState::Rk_RendererGraphicsState()
 
 }
 
+///////////////////////
+// DzOptionsFrame* Rk_RendererGraphicsState::getOptionsFrame()
+//      NOTES: This method appears to be alled whenever the Renderer is selected/changed.
+//             Also, the renderOptionsFrame appears to be deleted whenever the Renderer is changed out.
+//             Which means, it should be re-created whenever this method is called.
+///////////////////////
 DzOptionsFrame* Rk_RendererGraphicsState::getOptionsFrame()
 {
     if (renderOptionsFrame == NULL)

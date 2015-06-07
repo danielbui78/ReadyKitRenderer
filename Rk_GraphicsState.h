@@ -12,6 +12,7 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtCore/QRect>
+#include "dzelement.h"
 
 class DzRenderData;
 class QFrame;
@@ -46,7 +47,7 @@ class DzPropertyListItemModel;
 //          Options == scene-wide parameters which should not change within a scene
 //          Attributes == parameters which can vary from object to object
 ///////////////////////
-class Rk_RendererGraphicsState : QObject {
+class Rk_RendererGraphicsState : DzElement {
 Q_OBJECT
 public: // methods
     Rk_RendererGraphicsState();

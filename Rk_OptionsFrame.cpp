@@ -19,9 +19,11 @@
 #include "dzenumproperty.h"
 #include "dzboolproperty.h"
 
-
+#include "dzpropertylistview.h"
 #include "dzfilternavigationbar.h"
 #include "dzsidenavpropertylistview.h"
+#include "DzDynamicDividerWgt.h"
+#include "dzdividerbar.h"
 
 ///////////////////
 // Rk_OptionsFrame Constructor
@@ -32,38 +34,59 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
 {
     graphicsState = gs;
     
-    layout1 = new QVBoxLayout(this);
+    QHBoxLayout *hlayout = new QHBoxLayout(this);
     
-    filterBar = new DzFilterNavigationBar(this);
+    QListView *groupList = new QListView(this);
+    QFrame *contentFrame = new QFrame(this);
+//    DzDividerBar *dividerBar = new DzDividerBar(this, Qt::Vertical);
+    DzDynamicDividerWgt *dividerWgt = new DzDynamicDividerWgt(groupList, contentFrame, this, Qt::Vertical);
+    dividerWgt->setMargin(0);
+    
+    layout1 = new QVBoxLayout(contentFrame);
+    layout1->setMargin(0);
+    
+    filterBar = new DzFilterNavigationBar(contentFrame);
     filterBar->setAutoHidePageNavigation(true);
     filterBar->setPageSizeVisible(false);
     filterBar->setPageViewVisible(false);
     filterBar->setPageNavigationVisible(false);
     filterBar->setPageLabelVisible(false);
     
-    listView = new DzSideNavPropertyListView(this);
+    propertiesList = new DzSideNavPropertyListView(contentFrame);
     connect(filterBar, SIGNAL(filterChanged(const QString &)),
-            listView, SLOT(setFilterString(const QString &)) );
+            propertiesList, SLOT(setFilterString(const QString &)) );
     
     // connect the graphicsState render options to the UI
-/*
-    listView->addProperty(gs->execPath);
-    listView->addProperty(gs->argumentList);
-    listView->addProperty(gs->renderMode);
-    listView->addProperty(gs->customRenderString);
-    listView->addProperty(gs->maxTextureSize);
-    listView->addProperty(gs->debugLevel);
-    listView->addProperty(gs->renderServerList);
-    listView->addProperty(gs->saveAlphaChannel);
-*/
-
-    listView->setModel(gs->propertyListModel);
+    // ...more specifically, connect the properties data model to the listview
+    propertiesList->addProperty(gs->execPath);
+    propertiesList->addProperty(gs->argumentList);
+    propertiesList->addProperty(gs->renderMode);
+    propertiesList->addProperty(gs->customRenderString);
+    propertiesList->addProperty(gs->debugLevel);
+    propertiesList->addProperty(gs->networkRenderOn);
+    propertiesList->addProperty(gs->renderServerList);
+    propertiesList->addProperty(gs->maxTextureSize);
+    propertiesList->addProperty(gs->saveAlphaChannel);
+    
+//    propertiesList->setModel(gs->propertyListModel);
+    groupList->setModel(gs->propertyListModel);
     
     layout1->addWidget(filterBar);
-    layout1->addWidget(listView);
-    
-    this->setLayout(layout1);
+    layout1->addWidget(propertiesList);
 
+    hlayout->addWidget(dividerWgt);
+//    hlayout->addWidget(groupList);
+//    hlayout->addWidget(dividerBar);
+    
+//    hlayout->addWidget(filterBar);
+//    hlayout->addWidget(propertiesList);
+//    hlayout->addWidget(contentFrame);
+//    hlayout->addWidget(filterBar);
+    hlayout->setMargin(0);
+    
+//    contentFrame->setLayout(layout1);
+    this->setLayout(hlayout);
+//      this->setLayout(layout1);
     
 }
 
@@ -75,10 +98,12 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
 /////////////////////
 Rk_OptionsFrame::~Rk_OptionsFrame()
 {
-    delete listView;
+    delete propertiesList;
     delete layout1;
     delete filterBar;
     
+    // Set the graphicsState pointer back to NULL since we don't want it
+    // pointing into deleted space.
     graphicsState->renderOptionsFrame = NULL;
 }
 

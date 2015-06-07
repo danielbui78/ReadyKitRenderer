@@ -258,7 +258,7 @@ public:
     virtual QString getShaderFileName( const QString &shaderName ) const    { logConst("ReadyKitRenderer: unimplemented method: getShaderFileName( const QString &shaderName )"); return NULL;}
     virtual QString getShaderExtension() const  { logConst("ReadyKitRenderer: unimplemented method: getShaderExtension()"); return NULL;}
     virtual bool    isRendering() const { logConst("ReadyKitRenderer: unimplemented method: isRendering()"); return false;}
-    virtual QString getName() const { logConst("ReadyKitRenderer: unimplemented method: getName()"); return graphicsState->rendererName;}
+    virtual QString getName() const { logConst("ReadyKitRenderer: getName()"); return graphicsState->rendererName;}
     virtual DzNode* getCurrentNode() const  { logConst("ReadyKitRenderer: unimplemented method: getCurrentNode()"); return NULL;}
 
 

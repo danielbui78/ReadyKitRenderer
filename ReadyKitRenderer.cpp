@@ -44,6 +44,8 @@ void ReadyKitRenderer::log( QString string, int debugLevel )
 //      Returns a pointer to an OptionsFrame object.  This will be used by DazGUI to draw the Renderer Advanced Settings tab.
 //      NOTES:  I've looked for a way to modify the main Renderer Settings tab like the Daz Studio supplied renderers like
 //              3Delight and Iray, but it seems that requires undocumented calls to the system.
+//              The OptionsFrame widget appears to be destroyed when the Renderer is changed.  The work-around is to create
+//              a new widget whenever this method is called.
 ////////////////////
 DzOptionsFrame* ReadyKitRenderer::getOptionsFrame() const
 {
