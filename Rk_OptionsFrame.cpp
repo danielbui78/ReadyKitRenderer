@@ -38,12 +38,12 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
     
     QListView *groupList = new QListView(this);
     QFrame *contentFrame = new QFrame(this);
-//    DzDividerBar *dividerBar = new DzDividerBar(this, Qt::Vertical);
+
     DzDynamicDividerWgt *dividerWgt = new DzDynamicDividerWgt(groupList, contentFrame, this, Qt::Vertical);
     dividerWgt->setMargin(0);
     
-    layout1 = new QVBoxLayout(contentFrame);
-    layout1->setMargin(0);
+    QVBoxLayout *vlayout = new QVBoxLayout(contentFrame);
+    vlayout->setMargin(0);
     
     filterBar = new DzFilterNavigationBar(contentFrame);
     filterBar->setAutoHidePageNavigation(true);
@@ -52,41 +52,35 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
     filterBar->setPageNavigationVisible(false);
     filterBar->setPageLabelVisible(false);
     
-    propertiesList = new DzSideNavPropertyListView(contentFrame);
+    propertiesListView = new DzSideNavPropertyListView(contentFrame);
     connect(filterBar, SIGNAL(filterChanged(const QString &)),
-            propertiesList, SLOT(setFilterString(const QString &)) );
+            propertiesListView, SLOT(setFilterString(const QString &)) );
     
     // connect the graphicsState render options to the UI
-    // ...more specifically, connect the properties data model to the listview
-    propertiesList->addProperty(gs->execPath);
-    propertiesList->addProperty(gs->argumentList);
-    propertiesList->addProperty(gs->renderMode);
-    propertiesList->addProperty(gs->customRenderString);
-    propertiesList->addProperty(gs->debugLevel);
-    propertiesList->addProperty(gs->networkRenderOn);
-    propertiesList->addProperty(gs->renderServerList);
-    propertiesList->addProperty(gs->maxTextureSize);
-    propertiesList->addProperty(gs->saveAlphaChannel);
-    
+    propertiesListView->addProperty(gs->execPath);
+    propertiesListView->addProperty(gs->argumentList);
+    propertiesListView->addProperty(gs->renderMode);
+    propertiesListView->addProperty(gs->customRenderString);
+    propertiesListView->addProperty(gs->debugLevel);
+    propertiesListView->addProperty(gs->networkRenderOn);
+    propertiesListView->addProperty(gs->renderServerList);
+    propertiesListView->addProperty(gs->maxTextureSize);
+    propertiesListView->addProperty(gs->saveAlphaChannel);
+
+// propertyList->setModel isn't working
 //    propertiesList->setModel(gs->propertyListModel);
-    groupList->setModel(gs->propertyListModel);
     
-    layout1->addWidget(filterBar);
-    layout1->addWidget(propertiesList);
+    // Set up groupList selector
+    groupList->setModel((QAbstractItemModel*) gs->getPropertyGroupsModel());
+    
+    vlayout->addWidget(filterBar);
+    vlayout->addWidget(propertiesListView);
 
     hlayout->addWidget(dividerWgt);
-//    hlayout->addWidget(groupList);
-//    hlayout->addWidget(dividerBar);
+        hlayout->setMargin(0);
     
-//    hlayout->addWidget(filterBar);
-//    hlayout->addWidget(propertiesList);
-//    hlayout->addWidget(contentFrame);
-//    hlayout->addWidget(filterBar);
-    hlayout->setMargin(0);
-    
-//    contentFrame->setLayout(layout1);
+    contentFrame->setLayout(vlayout);
     this->setLayout(hlayout);
-//      this->setLayout(layout1);
     
 }
 
@@ -98,8 +92,7 @@ Rk_OptionsFrame::Rk_OptionsFrame(Rk_RendererGraphicsState *gs) : DzOptionsFrame(
 /////////////////////
 Rk_OptionsFrame::~Rk_OptionsFrame()
 {
-    delete propertiesList;
-    delete layout1;
+    delete propertiesListView;
     delete filterBar;
     
     // Set the graphicsState pointer back to NULL since we don't want it

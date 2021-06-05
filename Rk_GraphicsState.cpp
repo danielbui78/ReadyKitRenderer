@@ -10,6 +10,8 @@
 #include "Rk_GraphicsState.h"
 #include "Rk_OptionsFrame.h"
 
+#include <QtGui/QStandardItemModel>
+
 #include "dzrenderoptions.h"
 #include "dzappsettings.h"
 
@@ -19,6 +21,8 @@
 #include "dzenumproperty.h"
 #include "dzboolproperty.h"
 #include "dzpropertylistitemmodel.h"
+
+#include "dzpropertygroup.h"
 
 
 // This sets the executable extension to be used for the executable selection dialogs and path checking code.
@@ -41,6 +45,7 @@ Rk_RendererGraphicsState::Rk_RendererGraphicsState()
     // Initialize the graphics states
     rendererName = "ReadyKit Renderer"; // This is the name which will be displayed by Daz Studio
     renderOptions = new DzRenderOptions;
+    renderOptionsFrame = NULL;
     
     // Initialize Default Object Attributes
     Rk_ObjectAttributes *oa = new Rk_ObjectAttributes;
@@ -108,6 +113,18 @@ Rk_RendererGraphicsState::Rk_RendererGraphicsState()
     saveAlphaChannel->setLabel("Save alpha channel in final rendered image");
     saveAlphaChannel->setPath("Save Options");
     
+    // Add all properties to the GraphicsState object (DzElement subclass)
+    this->addProperty(execPath);
+    this->addProperty(argumentList);
+    this->addProperty(renderMode);
+    this->addProperty(customRenderString);
+    this->addProperty(debugLevel);
+    this->addProperty(networkRenderOn);
+    this->addProperty(renderServerList);
+    this->addProperty(maxTextureSize);
+    this->addProperty(saveAlphaChannel);
+    
+    // Create a List Item Model (refer to Qt Model/View programming guide)
     propertyListModel = new DzPropertyListItemModel();
     propertyListModel->addProperty(execPath);
     propertyListModel->addProperty(argumentList);
@@ -122,6 +139,23 @@ Rk_RendererGraphicsState::Rk_RendererGraphicsState()
     setDefaultSettings();
     loadSettings();
 
+}
+
+QStandardItemModel* Rk_RendererGraphicsState::getPropertyGroupsModel()
+{
+    QStandardItemModel *model = new QStandardItemModel();
+    DzPropertyGroupTree *tree = this->getPropertyGroups();
+    DzPropertyGroup *group = tree->getFirstChild();
+    QStandardItem *item;
+    while (group != NULL)
+    {
+        item = new QStandardItem;
+        item->setText(group->getPath());
+        model->appendRow(item);
+        group = group->getNextSibling();
+    }
+    
+    return model;
 }
 
 ///////////////////////

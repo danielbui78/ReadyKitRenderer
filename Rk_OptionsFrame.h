@@ -43,8 +43,7 @@ public:
     
 private:
     DzFilterNavigationBar *filterBar;
-    DzSideNavPropertyListView *propertiesList;
-    QVBoxLayout *layout1;
+    DzSideNavPropertyListView *propertiesListView;
 
 };
 

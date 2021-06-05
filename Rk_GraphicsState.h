@@ -39,6 +39,9 @@ class DzStringProperty;
 class DzAppSettings;
 class DzPropertyListItemModel;
 
+class QStandardItemModel;
+
+
 ////////////////////////
 // RendererGraphicsState
 //      This class will encapsulate all the data and stack functionallity for the graphics state / context.
@@ -58,6 +61,7 @@ public slots:
     void loadSettings();
     void saveSettings();
     DzOptionsFrame* getOptionsFrame();
+    QStandardItemModel* getPropertyGroupsModel();
     
     // property get/set methods
     int getDebugLevel();
@@ -91,7 +95,7 @@ public: // members
     QStringList debugLevelList = QStringList() << "Level 0: Errors Only" << "Level 1: Errors and Info" << "Level 2: Errors, Info, Debug" << "Level 3: Verbose Debugging Data";
     QStringList renderModeList = QStringList() << "Software" << "Hardware" << "Custom Render String...";
 
-    // Render Options
+    // Render Properties
     DzPropertyListItemModel *propertyListModel;
     DzFileProperty      *execPath;
     DzStringProperty    *argumentList;
