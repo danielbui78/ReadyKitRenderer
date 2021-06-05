@@ -318,7 +318,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INSTALL_PATH = "/Applications/DAZ 3D/DAZStudio4 64-bit Public Build/plugins";
+				INSTALL_PATH = "/Applications/DAZ 3D/DAZStudio4 64-bit/plugins";
 				LIBRARY_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "";
@@ -352,7 +352,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				INSTALL_PATH = "/Applications/DAZ 3D/DAZStudio4 64-bit Public Build/plugins";
+				INSTALL_PATH = "/Applications/DAZ 3D/DAZStudio4 64-bit/plugins";
 				LIBRARY_SEARCH_PATHS = "\"$(DAZ_SDK)/lib/$(DAZ_PLATFORM_NAME)\"";
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "";
