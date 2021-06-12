@@ -288,3 +288,4 @@ void Rk_RendererGraphicsState::setDebugLevel(int level)
     debugLevel->setValue(level);
 }
 
+#include "moc_RkGraphicsState.cpp"

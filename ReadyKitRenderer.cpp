@@ -102,7 +102,5 @@ void ReadyKitRenderer::prepareImage( const DzTexture *img, const QString &filena
     
 }
 
-
-
-
+#include "moc_ReadyKitRenderer.cpp"
 

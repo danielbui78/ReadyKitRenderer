@@ -123,3 +123,5 @@ void	Rk_OptionsFrame::restoreOptions( DzRenderOptions *options )
 {
     graphicsState->loadSettings();
 }
+
+#include "moc_Rk_OptionsFrame.cpp"
